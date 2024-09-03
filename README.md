@@ -1,17 +1,47 @@
-# Scripts (OLD)
-Scripts for roblox games that I made
+-- Script de Auto Farm para Dragon Ball Rage
 
-LOADER:
-```lua
--- Discord invite: https://discord.gg/axPQtz3WX7 (Friends discord Invite: discord.gg/hNX8VxcjMF)
+-- Função para aumentar o Ki
+local function autoKi(player)
+    while true do
+        wait(1)
+        player.Ki.Value = player.Ki.Value + 10
+    end
+end
 
-local ResidenceMassacreEsp = false -- If true then will for Residence Massacre it will enable esp instead of autofarm
-local ResidenceMassacreAutofarm = true -- if true then will enable autofarm for Residence Massacre
---[[
-I hope this residence massacre will work cuz if no then I cant test cuz I cant exploit
-also if u set these above both to false then nothing will show up in round in Residence Massacre
-]]
--- Discord invite: https://discord.gg/axPQtz3WX7 (Friends discord Invite: discord.gg/hNX8VxcjMF)
+-- Função para aumentar a Defesa
+local function autoDefense(player)
+    while true do
+        wait(1)
+        player.Defense.Value = player.Defense.Value + 5
+    end
+end
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/SadlekAski/Scripts/main/Main%20Loadstring/MainLoadstring.lua'))()
-```
+-- Função para aumentar o Ataque
+local function autoAttack(player)
+    while true do
+        wait(1)
+        player.Attack.Value = player.Attack.Value + 7
+    end
+end
+
+-- Função para auto Zenkai
+local function autoZenkai(player)
+    while true do
+        wait(1)
+        player.Zenkai.Value = player.Zenkai.Value + 1
+    end
+end
+
+-- Inicializa as funções para o jogador
+local player = game.Players.LocalPlayer
+
+-- Função para iniciar os scripts
+local function startScripts()
+    spawn(function() autoKi(player) end)
+    spawn(function() autoDefense(player) end)
+    spawn(function() autoAttack(player) end)
+    spawn(function() autoZenkai(player) end)
+end
+
+-- Conecta o botão à função de início
+script.Parent.MouseButton1Click:Connect(startScripts)
